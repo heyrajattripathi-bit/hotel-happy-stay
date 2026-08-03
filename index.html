@@ -1,0 +1,2703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hotel Happy Stay - Nashik's premier rooftop restaurant. Dine under the stars with breathtaking views, exquisite cuisine, and unforgettable experiences at Swaminarayan Nagar, Nashik.">
+    <meta name="keywords" content="rooftop restaurant Nashik, Hotel Happy Stay, fine dining Nashik, rooftop dining, best restaurant Nashik, sky dining, open air restaurant">
+    <title>Hotel Happy Stay | Where The Sky Becomes Your Ceiling — Premium Rooftop Dining, Nashik</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ─── Background Music Player ─── */
+        .music-player {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 950;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(3, 8, 16, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 160, 23, 0.25);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .music-player:hover {
+            border-color: rgba(212, 160, 23, 0.5);
+            box-shadow: 0 8px 30px rgba(212, 160, 23, 0.2);
+            transform: translateY(-2px);
+        }
+        .music-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #d4a017, #b8860b);
+            border-radius: 50%;
+            color: #030810;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+        .music-player:hover .music-btn { transform: scale(1.1); }
+        .music-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .music-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #fde047;
+            letter-spacing: 0.03em;
+        }
+        .music-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.65rem;
+            color: #737373;
+            font-style: italic;
+        }
+        /* Sound wave animation */
+        .sound-waves {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 18px;
+            margin-left: 0.25rem;
+        }
+        .sound-wave {
+            width: 3px;
+            background: #d4a017;
+            border-radius: 3px;
+            animation: soundWave 0.8s ease-in-out infinite alternate;
+        }
+        .sound-wave:nth-child(1) { height: 6px; animation-delay: 0s; }
+        .sound-wave:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+        .sound-wave:nth-child(3) { height: 8px; animation-delay: 0.3s; }
+        .sound-wave:nth-child(4) { height: 16px; animation-delay: 0.1s; }
+        .sound-wave:nth-child(5) { height: 10px; animation-delay: 0.25s; }
+        .music-player.paused .sound-wave {
+            animation: none;
+            height: 3px !important;
+            opacity: 0.4;
+        }
+        @keyframes soundWave {
+            0% { transform: scaleY(0.4); }
+            100% { transform: scaleY(1); }
+        }
+        @media (max-width: 600px) {
+            .music-player {
+                bottom: 1rem;
+                left: 1rem;
+                padding: 0.5rem 0.8rem;
+                gap: 0.5rem;
+            }
+            .music-info { display: none; }
+        }
+
+        /* Hero real photo background */
+        .hero-photo-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        .hero-photo-bg .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .hero-photo-bg .hero-slide.active {
+            opacity: 1;
+        }
+        .hero-photo-bg .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.05);
+            animation: heroZoom 12s ease-in-out infinite alternate;
+        }
+        @keyframes heroZoom {
+            0% { transform: scale(1.0); }
+            100% { transform: scale(1.08); }
+        }
+        .hero-photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(3, 8, 16, 0.65) 0%,
+                rgba(3, 8, 16, 0.35) 40%,
+                rgba(3, 8, 16, 0.45) 70%,
+                rgba(3, 8, 16, 0.95) 100%
+            );
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- PRELOADER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-line"></div>
+            <div class="preloader-text">
+                <span class="preloader-brand">Hotel Happy Stay</span>
+                <span class="preloader-tagline">Elevating Your Senses</span>
+            </div>
+            <div class="preloader-progress">
+                <div class="preloader-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- BACKGROUND MUSIC (Marathi Welcome) -->
+    <!-- ═══════════════════════════════════════════ -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="mickeyscat-moment-of-peace-mickeyscat-554494.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-player paused" id="musicPlayer" title="Click to play/pause music" style="display: none !important; opacity: 0; pointer-events: none;">
+        <div class="music-btn" id="musicBtn">
+            <svg id="playIcon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg id="pauseIcon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </div>
+        <div class="music-info">
+            <span class="music-title">🎵 Welcome Music</span>
+            <span class="music-subtitle">Swagat Geet</span>
+        </div>
+        <div class="sound-waves">
+            <div class="sound-wave"></div>
+            <div class="sound-wave"></div>
+            <div class="sound-wave"></div>
+            <div class="sound-wave"></div>
+            <div class="sound-wave"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- CUSTOM CURSOR -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- NAVIGATION -->
+    <!-- ═══════════════════════════════════════════ -->
+    <header id="mainHeader" class="main-header">
+        <div class="header-bg"></div>
+        <div class="header-container">
+            <a href="#home" class="logo" id="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25 2L3 18V48H47V18L25 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        <path d="M15 48V30H35V48" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        <circle cx="25" cy="14" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        <path d="M8 20L25 6L42 20" stroke="currentColor" stroke-width="1" fill="none" opacity="0.5"/>
+                        <line x1="3" y1="48" x2="47" y2="48" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">Hotel Happy Stay</span>
+                    <span class="logo-sub">Rooftop Restaurant & Family Dining</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active" data-section="home">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-text">Home</span>
+                    </a></li>
+                    <li><a href="#about" class="nav-link" data-section="about">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-text">About Us</span>
+                    </a></li>
+                    <li><a href="#services" class="nav-link" data-section="services">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-text">Services</span>
+                    </a></li>
+                    <li><a href="#menu" class="nav-link" data-section="menu">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-text">Menu</span>
+                    </a></li>
+                    <li><a href="#contact" class="nav-link" data-section="contact">
+                        <span class="nav-indicator"></span>
+                        <span class="nav-text">Contact</span>
+                    </a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="tel:+919552347114" class="header-phone" id="headerPhone">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>Reserve Now</span>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu-bg"></div>
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-header">
+                <span class="mobile-menu-brand">Hotel Happy Stay</span>
+                <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#about" class="mobile-nav-link">About Us</a>
+                <a href="#services" class="mobile-nav-link">Services</a>
+                <a href="#menu" class="mobile-nav-link">Menu</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </nav>
+            <div class="mobile-menu-footer">
+                <p>Plot No. 31, Near Kohinoor School,<br>Nashik, Maharashtra 422003</p>
+                <a href="tel:+919552347114" class="mobile-cta">Reserve a Table</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 1: HOME / HERO -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="home" class="hero-section">
+        <!-- Animated Particle Stars Background -->
+        <canvas id="heroParticles" class="hero-particles"></canvas>
+
+        <!-- Real Photo Slideshow Background -->
+        <div class="hero-photo-bg">
+            <div class="hero-slide active">
+                <img src="images/rooftop_wide.jpg" alt="Hotel Happy Stay Rooftop Dining">
+            </div>
+            <div class="hero-slide">
+                <img src="images/table_closeup.jpg" alt="Premium Table Setting">
+            </div>
+            <div class="hero-slide">
+                <img src="images/rooftop_seating.jpg" alt="Rooftop Seating Area">
+            </div>
+            <div class="hero-slide">
+                <img src="images/rooftop_ambiance.jpg" alt="Rooftop Ambiance">
+            </div>
+            <div class="hero-slide">
+                <img src="images/building_exterior.jpg" alt="Hotel Happy Stay Building">
+            </div>
+            <div class="hero-photo-overlay"></div>
+        </div>
+
+        <!-- Animated Gradient Mesh -->
+        <div class="hero-gradient-mesh"></div>
+
+        <!-- Floating Light Orbs -->
+        <div class="floating-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+            <div class="orb orb-4"></div>
+            <div class="orb orb-5"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge" data-scroll-reveal>
+                <span class="badge-star">★</span>
+                <span>Nashik's Premier Rooftop Experience</span>
+                <span class="badge-star">★</span>
+            </div>
+
+            <h1 class="hero-title" data-scroll-reveal>
+                <span class="title-line title-line-1">
+                    <span class="title-word">Where</span>
+                    <span class="title-word">The</span>
+                    <span class="title-word title-accent">Sky</span>
+                </span>
+                <span class="title-line title-line-2">
+                    <span class="title-word">Becomes</span>
+                    <span class="title-word">Your</span>
+                </span>
+                <span class="title-line title-line-3">
+                    <span class="title-word title-accent">Ceiling</span>
+                </span>
+            </h1>
+
+            <p class="hero-subtitle" data-scroll-reveal>
+                Rise above the ordinary. Savor extraordinary flavors under an infinite canopy of stars, 
+                where every bite is a celebration and every moment is kissed by the open sky.
+            </p>
+
+            <div class="hero-cta-group" data-scroll-reveal>
+                <a href="#contact" class="btn btn-primary" id="heroReserveBtn">
+                    <span class="btn-text">Reserve Your Sky Table</span>
+                    <span class="btn-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                    <span class="btn-shimmer"></span>
+                </a>
+                <a href="#about" class="btn btn-glass" id="heroExploreBtn">
+                    <span class="btn-text">Explore Our World</span>
+                    <span class="btn-icon">↓</span>
+                </a>
+            </div>
+
+            <div class="hero-stats" data-scroll-reveal>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="4.8">0</span>
+                    <span class="stat-label">Guest Rating</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="150">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Seats Available</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="50">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Signature Dishes</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" data-scroll-reveal>
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span class="scroll-text">Scroll to Discover</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 2: ABOUT US -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="about" class="about-section">
+        <div class="section-bg-pattern"></div>
+
+        <!-- Section Header -->
+        <div class="section-header" data-scroll-reveal>
+            <span class="section-eyebrow">Our Story</span>
+            <h2 class="section-title">
+                A <span class="text-gradient">Love Letter</span> to Rooftop Dining
+            </h2>
+            <div class="section-title-line"></div>
+        </div>
+
+        <div class="about-container">
+            <!-- About Story -->
+            <div class="about-story" data-scroll-reveal>
+                <div class="about-story-content">
+                    <div class="about-quote">
+                        <svg class="quote-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" opacity="0.15"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                        <p class="about-lead-text">
+                            Born from a simple dream — to create a place where the boundaries between dining and 
+                            the heavens dissolve — <strong>Hotel Happy Stay</strong> rose from the heart of Nashik's 
+                            Swaminarayan Nagar to become the city's most sought-after rooftop culinary destination.
+                        </p>
+                    </div>
+
+                    <p class="about-text">
+                        Perched atop our beautifully designed property, our rooftop restaurant is more than just a place to eat — 
+                        it's an escape. A sanctuary where the warm glow of industrial pendant lights dances with the evening breeze, 
+                        where lush vertical gardens frame your view of Nashik's glittering skyline, and where every dish tells a 
+                        story of passion, heritage, and innovation.
+                    </p>
+
+                    <p class="about-text">
+                        Our culinary team draws inspiration from the rich traditions of Maharashtra's wine country, 
+                        blending time-honored recipes with contemporary flair. Each ingredient is sourced with care, 
+                        each dish is crafted with precision, and each plate is a canvas of color, texture, and taste 
+                        that honors the land we call home.
+                    </p>
+
+                    <div class="about-values">
+                        <div class="value-item" data-scroll-reveal>
+                            <div class="value-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <h4>Locally Sourced</h4>
+                            <p>Fresh ingredients from Nashik's farms and markets, supporting local communities.</p>
+                        </div>
+                        <div class="value-item" data-scroll-reveal>
+                            <div class="value-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            </div>
+                            <h4>Made with Love</h4>
+                            <p>Every dish is a labor of love, crafted by our passionate culinary artists.</p>
+                        </div>
+                        <div class="value-item" data-scroll-reveal>
+                            <div class="value-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <h4>Pure & Hygienic</h4>
+                            <p>Uncompromising standards of cleanliness and food safety you can trust.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-gallery" data-scroll-reveal>
+                    <div class="gallery-main">
+                        <img src="images/rooftop_wide.jpg" alt="Hotel Happy Stay Rooftop Restaurant — Open air dining with pendant lights and green wall" loading="lazy">
+                        <div class="gallery-main-overlay">
+                            <span>Our Rooftop Paradise</span>
+                        </div>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="images/table_closeup.jpg" alt="Premium table settings with elegant place arrangements" loading="lazy">
+                            <div class="gallery-item-overlay">
+                                <span>Premium Dining</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/building_exterior.jpg" alt="Hotel Happy Stay building exterior at dusk" loading="lazy">
+                            <div class="gallery-item-overlay">
+                                <span>Our Home</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Milestone Strip -->
+        <div class="milestone-strip" data-scroll-reveal>
+            <div class="milestone">
+                <span class="milestone-number" data-count="2026">0</span>
+                <span class="milestone-label">Established</span>
+            </div>
+            <div class="milestone">
+                <span class="milestone-number" data-count="15000">0</span>
+                <span class="milestone-suffix">+</span>
+                <span class="milestone-label">Happy Guests</span>
+            </div>
+            <div class="milestone">
+                <span class="milestone-number" data-count="15">0</span>
+                <span class="milestone-suffix">+</span>
+                <span class="milestone-label">Expert Chefs</span>
+            </div>
+            <div class="milestone">
+                <span class="milestone-number" data-count="100">0</span>
+                <span class="milestone-suffix">%</span>
+                <span class="milestone-label">Satisfaction</span>
+            </div>
+        </div>
+
+        <!-- Manager Section -->
+        <div class="manager-section" data-scroll-reveal>
+            <div class="manager-image-wrapper">
+                <div class="manager-image-frame">
+                    <img src="images/manager.png" alt="Mr. Agumjot Ranjeet Singh Rajput" loading="lazy">
+                    <div class="manager-frame-border"></div>
+                </div>
+            </div>
+            <div class="manager-info">
+                <span class="manager-subtitle">Meet The Visionary</span>
+                <h3 class="manager-name">Mr. Agumjot Ranjeet Singh Rajput</h3>
+                <p class="manager-title">Manager</p>
+                <div class="manager-desc">
+                    <p>
+                        With a profound passion for hospitality and an unwavering commitment to excellence, Mr. Agumjot brings Hotel Happy Stay's vision to life. His philosophy is simple yet powerful: every guest who walks through our doors is family.
+                    </p>
+                    <p>
+                        Under his dynamic leadership, what began as a dream in 2026 has quickly blossomed into Nashik's premier rooftop destination, hosting over 15,000 happy guests. Through meticulous attention to detail and a warm, welcoming approach, he has cultivated an environment where unforgettable memories are made under the open sky.
+                    </p>
+                </div>
+                <div class="manager-signature">
+                    <span class="sig-name">Agumjot Rajput</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 3: SERVICES -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="services" class="services-section">
+        <div class="services-parallax-bg"></div>
+
+        <div class="section-header" data-scroll-reveal>
+            <span class="section-eyebrow">What We Offer</span>
+            <h2 class="section-title">
+                Experiences That <span class="text-gradient">Touch The Sky</span>
+            </h2>
+            <div class="section-title-line"></div>
+            <p class="section-description">
+                From intimate dinners under the stars to grand celebrations that light up the night, 
+                we craft unforgettable moments tailored to your every desire.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Service Card 1 -->
+            <div class="service-card" data-scroll-reveal>
+                <div class="service-card-glow"></div>
+                <div class="service-image">
+                    <img src="images/rooftop_seating.jpg" alt="Rooftop Dining Seating">
+                </div>
+                <h3 class="service-title">Rooftop Dining</h3>
+                <p class="service-text">
+                    Our signature open-air dining experience under the vast Nashik sky. Enjoy perfectly set tables, 
+                    ambient pendant lighting, and a green garden backdrop as you savor every course. Available for 
+                    lunch and dinner with family-style and couple seating arrangements.
+                </p>
+                <div class="service-features">
+                    <span>🌙 Starlit Ambiance</span>
+                    <span>🌿 Garden Views</span>
+                    <span>💡 Mood Lighting</span>
+                </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="service-card" data-scroll-reveal>
+                <div class="service-card-glow"></div>
+                <div class="service-image">
+                    <img src="images/event_celebration.jpg" alt="Private Celebrations Setup">
+                </div>
+                <h3 class="service-title">Private Celebrations</h3>
+                <p class="service-text">
+                    Birthdays, anniversaries, engagements, or simply celebrating life — our rooftop transforms 
+                    into your personal paradise. Custom décor, personalized menus, dedicated service staff, 
+                    and a DJ setup option to make your special night truly legendary.
+                </p>
+                <div class="service-features">
+                    <span>🎂 Custom Décor</span>
+                    <span>🎵 DJ Available</span>
+                    <span>📸 Photo Corner</span>
+                </div>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="service-card" data-scroll-reveal>
+                <div class="service-card-glow"></div>
+                <div class="service-image">
+                    <img src="images/table_closeup.jpg" alt="Corporate Events Table Setup">
+                </div>
+                <h3 class="service-title">Corporate Events</h3>
+                <p class="service-text">
+                    Elevate your team dinners, product launches, and corporate gatherings to new heights — 
+                    literally. Our versatile rooftop venue accommodates up to 150 guests with flexible seating, 
+                    A/V equipment support, and bespoke catering packages.
+                </p>
+                <div class="service-features">
+                    <span>🏢 150+ Capacity</span>
+                    <span>🎤 A/V Support</span>
+                    <span>🍽️ Custom Menus</span>
+                </div>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div class="service-card" data-scroll-reveal>
+                <div class="service-card-glow"></div>
+                <div class="service-image">
+                    <img src="images/rooftop_ambiance.jpg" alt="Live Music Ambiance">
+                </div>
+                <h3 class="service-title">Live Music Nights</h3>
+                <p class="service-text">
+                    Every weekend, our rooftop comes alive with soulful melodies from local artists and bands. 
+                    From acoustic sets during golden hour to high-energy performances under the stars, 
+                    our live music nights are the heartbeat of Nashik's social scene.
+                </p>
+                <div class="service-features">
+                    <span>🎸 Live Bands</span>
+                    <span>🎹 Acoustic Sets</span>
+                    <span>🌅 Sunset Sessions</span>
+                </div>
+            </div>
+
+            <!-- Service Card 5 -->
+            <div class="service-card" data-scroll-reveal>
+                <div class="service-card-glow"></div>
+                <div class="service-image">
+                    <img src="images/food_showcase.jpg" alt="Family Gatherings Food Showcase">
+                </div>
+                <h3 class="service-title">Family Gatherings</h3>
+                <p class="service-text">
+                    Bring the entire family together for feasts that warm the soul. Our spacious rooftop offers 
+                    large table arrangements perfect for joint family dinners, festive celebrations, and 
+                    weekend get-togethers. Kid-friendly options and high chairs available.
+                </p>
+                <div class="service-features">
+                    <span>👨‍👩‍👧‍👦 Family Tables</span>
+                    <span>🧒 Kid-Friendly</span>
+                    <span>🎉 Festive Specials</span>
+                </div>
+            </div>
+
+            <!-- Service Card 6 -->
+            <div class="service-card" data-scroll-reveal>
+                <div class="service-card-glow"></div>
+                <div class="service-image">
+                    <img src="images/building_exterior.jpg" alt="Hotel & Stay Packages">
+                </div>
+                <h3 class="service-title">Hotel & Stay Packages</h3>
+                <p class="service-text">
+                    Extend your rooftop experience with our comfortable hotel rooms. Wake up, step onto the 
+                    rooftop for breakfast with a view, and let your entire stay be an experience. Special 
+                    dine-and-stay packages available for couples and families.
+                </p>
+                <div class="service-features">
+                    <span>🛏️ Cozy Rooms</span>
+                    <span>☕ Breakfast Included</span>
+                    <span>💑 Couple Packages</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services CTA -->
+        <div class="services-cta" data-scroll-reveal>
+            <p>Have a special event in mind? Let's make it unforgettable.</p>
+            <a href="#contact" class="btn btn-primary">
+                <span class="btn-text">Plan Your Event</span>
+                <span class="btn-icon">→</span>
+                <span class="btn-shimmer"></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 4: MENU -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="menu" class="menu-section">
+        <div class="menu-bg-decoration"></div>
+
+        <div class="section-header" data-scroll-reveal>
+            <span class="section-eyebrow">Our Menu</span>
+            <h2 class="section-title">
+                A Symphony of <span class="text-gradient">Flavors</span>
+            </h2>
+            <div class="section-title-line"></div>
+            <p class="section-description">
+                Our menu is a curated journey through India's culinary landscape, reimagined with a rooftop twist. 
+                Every dish is a masterpiece, crafted from the finest ingredients and served with soul.
+            </p>
+        </div>
+
+        <!-- Menu Categories -->
+        <div class="menu-categories" data-scroll-reveal>
+            <button class="menu-cat-btn active" data-category="starters">Starters & Snacks</button>
+            <button class="menu-cat-btn" data-category="mains">Main Course (Veg & Non-Veg)</button>
+            <button class="menu-cat-btn" data-category="breads">Breads & Rice</button>
+            <button class="menu-cat-btn" data-category="refreshments">Beverages & Coolers</button>
+            <button class="menu-cat-btn" data-category="fastfood">Fast Food</button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="menu-grid" id="menuGrid">
+<h3 class="menu-subcategory" data-category="starters">TIMEPASS</h3>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Masala Papad</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Roasted Papad</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹25</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Nagali Roasted Papad</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹25</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Sindhi Papad</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹90</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Finger Chips</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹120</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Nagali Fry</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹30</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Chana Koliwada</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹130</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Aloo Pakoda</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹130</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Pakoda</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹190</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Kanda Bhaji</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹120</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Harabhara Kabab</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹230</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Green Salad</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Raita</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+<h3 class="menu-subcategory" data-category="starters">VEG CHINESE STARTER</h3>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Manchurian Dry</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹210</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Chilly</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹260</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Aloo Chilly</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹180</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Soyabean Chilly</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹180</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Crispy</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹220</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Mushroom Chilly</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹240</span>
+</div>
+<h3 class="menu-subcategory" data-category="starters">NON-VEG CHINESE STARTER</h3>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Lollipop</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹280</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Chilly</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹270</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Crispy</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹260</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Manchurian Dry</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹250</span>
+</div>
+<h3 class="menu-subcategory" data-category="starters">NON-VEG TANDOORI STARTER</h3>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Tikka</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹290</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Banjara Kabab</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹310</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Pahadi Kabab</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹310</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Tandoori Chicken H/F</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹310/520</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Tandoori Lollipop</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹290</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Raan</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹580</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Najrana Kabab</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹320</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Tangdi Kabab</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹190/380</span>
+</div>
+<h3 class="menu-subcategory" data-category="starters">VEG TANDOORI STARTER</h3>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Tikka</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹250</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Pahadi Kabab</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹260</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Banjara Kabab</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹260</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Sheekh Kabab</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹210</span>
+</div>
+
+<div class="menu-item" data-category="starters">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Mushroom Tikka</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹240</span>
+</div>
+<h3 class="menu-subcategory" data-category="mains">VEG MAIN COURSE</h3>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Kaju Masala</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹290</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Bhindi Masala</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹180</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Bhindi Fry</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹170</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Baingan Masala</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹180</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Baingan Bharta</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹190</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Kofta</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹250</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Kolhapuri</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹230</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Shev Bhaji</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹170</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Mix Veg</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹220</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Handi</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹310</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Tikka Masala</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹280</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Masala</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹250</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Mutter Paneer</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹250</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Musallam</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹350</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Lahori</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹260</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Kadhai Paneer</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹260</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Kaju Masala</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹310</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Mushroom Masala</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹290</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Sham Savera</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹350</span>
+</div>
+<h3 class="menu-subcategory" data-category="mains">DAL</h3>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Dal Fry</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹150</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Dal Tadka</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹160</span>
+</div>
+<h3 class="menu-subcategory" data-category="mains">NON-VEG MAIN COURSE</h3>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Egg Masala/Curry</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹180/170</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Handi F/H</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹750/420</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Masala</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹290</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Tikka Masala</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹310</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Butter Chicken (Plate)</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹320</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Mughlai Musallam F/H</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹990/450</span>
+</div>
+
+<div class="menu-item" data-category="mains">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Sagwala</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹310</span>
+</div>
+<h3 class="menu-subcategory" data-category="breads">INDIAN BREAD</h3>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Roti</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹20</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Chapati</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹18</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Butter Chapati</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹23</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Butter Roti</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹25</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Naan</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Butter Garlic Naan</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹60</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Butter Naan</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Butter Paratha</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Kulcha</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹35</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Butter Kulcha</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹40</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Aloo Paratha</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹90</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Paneer Paratha</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹120</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Lacha Paratha</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹40</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Lacha Butter Paratha</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Desi Paratha</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+<h3 class="menu-subcategory" data-category="breads">BREAD</h3>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Upama</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Poha</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Bread Butter</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Sandwich</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Cheese Sandwich</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹100</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Omlet Sandwich</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹120</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Extra Bread (2 Pc)</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹15</span>
+</div>
+<h3 class="menu-subcategory" data-category="breads">RICE</h3>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Steam Rice H/F</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹130/70</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Jeera Rice H/F</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹150/90</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Dal Khichadi</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹190</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Biryani</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹240</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Biryani</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹280</span>
+</div>
+
+<div class="menu-item" data-category="breads">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Egg Biryani</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹250</span>
+</div>
+<h3 class="menu-subcategory" data-category="refreshments">BEVERAGE</h3>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Mineral Water</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹20</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Tea</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹25</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Coffee</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹40</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Black Tea</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹20</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Lassi</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Buttermilk</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹40</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Cold Drinks</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹20/25</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Hot Milk</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+<h3 class="menu-subcategory" data-category="refreshments">CAFÉ BEVERAGES</h3>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Tea</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹25</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Ginger Tea</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹20</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Lemon Tea</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹20</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Tea Without Sugar</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹25</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Black Coffee</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹25</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Hot Coffee</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹40</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Cold Coffee</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Cold Coffee with Crush</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹65</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Cold Coffee with Ice Cream</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Strawberry</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹90</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Lychee</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Blue Berry</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹110</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Kiwi</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Guava</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹90</span>
+</div>
+
+<div class="menu-item" data-category="refreshments">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Black Currant</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹90</span>
+</div>
+<h3 class="menu-subcategory" data-category="fastfood">EGG</h3>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Omlet</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹90</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Egg Bhurji</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹120</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Cheese Omlet</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹140</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Boiled Egg</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹70</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Boiled Bhurji</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹110</span>
+</div>
+<h3 class="menu-subcategory" data-category="fastfood">VEG NOODLES</h3>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Hakka Noodles</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹210</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Sez Noodles</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹220</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Triple Sez Noodles</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹290</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Fried Rice</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹190</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Sez Fried Rice</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹210</span>
+</div>
+<h3 class="menu-subcategory" data-category="fastfood">NON-VEG NOODLES</h3>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Hakka Noodles</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹240</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Sez Noodles</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹250</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Triple Sez Rice</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹310</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Sez Fried Rice</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹220</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Egg Fried Rice</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹190</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Chicken Fried Rice</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹210</span>
+</div>
+<h3 class="menu-subcategory" data-category="fastfood">FRIES</h3>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Classic Fries</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹120</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Peri Peri Fries</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹140</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Cheesy Loaded Fries</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹160</span>
+</div>
+<h3 class="menu-subcategory" data-category="fastfood">NACHOS</h3>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Loaded Nachos</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Loaded Cheesy Nachos</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹100</span>
+</div>
+<h3 class="menu-subcategory" data-category="fastfood">MAGGI</h3>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Plain Maggi</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹60</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Masala Maggi</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹70</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Cheese Maggi</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Happy Stay's Special Maggi</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹90</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Vegetable Maggi</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+<h3 class="menu-subcategory" data-category="fastfood">SANDWICH</h3>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Sandwich</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Veg Cheese Sandwich</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹100</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Garlic Bread</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹100</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge nonveg">●</span>
+            <h4 class="menu-item-name">Omlet Sandwich</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹120</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Bread Butter</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Bread Butter Cheese</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹80</span>
+</div>
+<h3 class="menu-subcategory" data-category="fastfood">BUN</h3>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Bun Maska</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹40</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Jam Bun</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹50</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Cheese Bun Maska</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹60</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Cheese Jam Bun Maska</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹70</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Chocolate Bun</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹70</span>
+</div>
+<h3 class="menu-subcategory" data-category="fastfood">EXTRA</h3>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Cheese</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹25</span>
+</div>
+
+<div class="menu-item" data-category="fastfood">
+    <div class="menu-item-info">
+        <div class="menu-item-header">
+            <span class="menu-item-badge veg">●</span>
+            <h4 class="menu-item-name">Butter</h4>
+        </div>
+    </div>
+    <span class="menu-item-price">₹15</span>
+</div>
+
+        </div>
+
+        <div class="menu-note" data-scroll-reveal>
+            <p>✨ Prices and availability are subject to change. Please contact us for party bookings or special orders.</p>
+            <span class="veg-indicator"><span class="menu-item-badge veg" style="position:static;display:inline-block;width:12px;height:12px;">●</span> Vegetarian</span>
+            <span class="nonveg-indicator"><span class="menu-item-badge nonveg" style="position:static;display:inline-block;width:12px;height:12px;">●</span> Non-Vegetarian</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- Image Showcase Band (between Menu & Contact) -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="image-showcase">
+        <div class="showcase-track">
+            <div class="showcase-slide">
+                <img src="images/rooftop_wide.jpg" alt="Hotel Happy Stay Rooftop Wide View" loading="lazy">
+            </div>
+            <div class="showcase-slide">
+                <img src="images/table_closeup.jpg" alt="Premium Table Settings" loading="lazy">
+            </div>
+            <div class="showcase-slide">
+                <img src="images/rooftop_seating.jpg" alt="Spacious Rooftop Seating" loading="lazy">
+            </div>
+            <div class="showcase-slide">
+                <img src="images/rooftop_ambiance.jpg" alt="Beautiful Rooftop Ambiance" loading="lazy">
+            </div>
+            <div class="showcase-slide">
+                <img src="images/building_exterior.jpg" alt="Hotel Happy Stay Building" loading="lazy">
+            </div>
+            <div class="showcase-slide">
+                <img src="images/food_showcase.jpg" alt="Signature Dishes" loading="lazy">
+            </div>
+            <!-- Duplicate for infinite scroll -->
+            <div class="showcase-slide">
+                <img src="images/rooftop_wide.jpg" alt="Hotel Happy Stay Rooftop Wide View" loading="lazy">
+            </div>
+            <div class="showcase-slide">
+                <img src="images/table_closeup.jpg" alt="Premium Table Settings" loading="lazy">
+            </div>
+            <div class="showcase-slide">
+                <img src="images/rooftop_seating.jpg" alt="Spacious Rooftop Seating" loading="lazy">
+            </div>
+            <div class="showcase-slide">
+                <img src="images/rooftop_ambiance.jpg" alt="Beautiful Rooftop Ambiance" loading="lazy">
+            </div>
+            <div class="showcase-slide">
+                <img src="images/building_exterior.jpg" alt="Hotel Happy Stay Building" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 5: CONTACT -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="contact" class="contact-section">
+        <div class="contact-bg-pattern"></div>
+
+        <div class="section-header" data-scroll-reveal>
+            <span class="section-eyebrow">Get In Touch</span>
+            <h2 class="section-title">
+                Your Table <span class="text-gradient">Awaits</span>
+            </h2>
+            <div class="section-title-line"></div>
+            <p class="section-description">
+                Whether it's a reservation, an event inquiry, or just to say hello — we'd love to hear from you.
+            </p>
+        </div>
+
+        <div class="contact-container">
+            <!-- Contact Info -->
+            <div class="contact-info" data-scroll-reveal>
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="contact-card-content">
+                        <h4>Visit Us</h4>
+                        <p>Plot No. 31, Near Kohinoor School,<br>
+                        Opp. Meenatai Thakare Stadium,<br>
+                        Swaminarayan Nagar, Nashik,<br>
+                        Maharashtra 422003, India</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <div class="contact-card-content">
+                        <h4>Call Us</h4>
+                        <p><a href="tel:+919552347114">+91-9552347114, +91-8788345853</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div class="contact-card-content">
+                        <h4>Opening Hours</h4>
+                        <p>Monday – Sunday<br>
+                        <strong>Lunch:</strong> 12:00 PM – 3:30 PM<br>
+                        <strong>Dinner:</strong> 7:00 PM – 11:30 PM</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div class="contact-card-content">
+                        <h4>Email Us</h4>
+                        <p><a href="mailto:info@hotelhappystay.com">info@hotelhappystay.com</a></p>
+                        <p><a href="mailto:reservations@hotelhappystay.com">reservations@hotelhappystay.com</a></p>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook" id="socialFacebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram" id="socialInstagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="WhatsApp" id="socialWhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube" id="socialYouTube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrap" data-scroll-reveal>
+                <form class="contact-form" id="contactForm">
+                    <h3 class="form-title">Reserve Your Sky Table</h3>
+                    <p class="form-subtitle">Fill in the details and we'll get back to you within the hour.</p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Full Name</label>
+                            <input type="text" id="contactName" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone Number</label>
+                            <input type="tel" id="contactPhone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" name="email" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactDate">Preferred Date</label>
+                            <input type="date" id="contactDate" name="date">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactGuests">Number of Guests</label>
+                            <select id="contactGuests" name="guests">
+                                <option value="">Select guests</option>
+                                <option value="1-2">1 – 2 Guests</option>
+                                <option value="3-4">3 – 4 Guests</option>
+                                <option value="5-8">5 – 8 Guests</option>
+                                <option value="9-15">9 – 15 Guests</option>
+                                <option value="16-30">16 – 30 Guests</option>
+                                <option value="30+">30+ Guests (Event)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactOccasion">Occasion</label>
+                            <select id="contactOccasion" name="occasion">
+                                <option value="">Select occasion</option>
+                                <option value="casual">Casual Dining</option>
+                                <option value="birthday">Birthday</option>
+                                <option value="anniversary">Anniversary</option>
+                                <option value="engagement">Engagement</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="family">Family Gathering</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="contactMessage">Special Requests</label>
+                        <textarea id="contactMessage" name="message" placeholder="Any dietary preferences, decoration requests, or special requirements..." rows="4"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit" id="submitReservation">
+                        <span class="btn-text">Send Reservation Request</span>
+                        <span class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </span>
+                        <span class="btn-shimmer"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Google Map -->
+        <div class="map-container" data-scroll-reveal>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.1!2d73.79!3d19.99!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU5JzI0LjAiTiA3M8KwNDcnMjQuMCJF!5e0!3m2!1sen!2sin!4v1"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Hotel Happy Stay Location Map">
+            </iframe>
+            <div class="map-overlay-info">
+                <div class="map-pin">📍</div>
+                <div>
+                    <strong>Hotel Happy Stay</strong>
+                    <p>Swaminarayan Nagar, Nashik</p>
+                </div>
+                <a href="https://maps.google.com/?q=Hotel+Happy+Stay+Nashik" target="_blank" rel="noopener" class="map-directions-btn">Get Directions →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FOOTER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <footer class="main-footer">
+        <div class="footer-glow"></div>
+
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+                        <path d="M25 2L3 18V48H47V18L25 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        <path d="M15 48V30H35V48" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        <circle cx="25" cy="14" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <div>
+                        <h3>Hotel Happy Stay</h3>
+                        <p>Rooftop Restaurant & Family Dining</p>
+                    </div>
+                </div>
+                <p class="footer-description">
+                    Nashik's most beloved rooftop dining destination. Where culinary excellence meets 
+                    sky-high ambiance. Dine among the stars, celebrate with loved ones, and create 
+                    memories that last a lifetime.
+                </p>
+            </div>
+
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#services">Rooftop Dining</a></li>
+                        <li><a href="#services">Private Events</a></li>
+                        <li><a href="#services">Corporate Gatherings</a></li>
+                        <li><a href="#services">Live Music Nights</a></li>
+                        <li><a href="#services">Hotel Stay Packages</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li>📍 Swaminarayan Nagar, Nashik</li>
+                        <li>📞 <a href="tel:+919552347114">+91-9552347114, +91-8788345853</a></li>
+                        <li>📧 <a href="mailto:info@hotelhappystay.com">info@hotelhappystay.com</a></li>
+                        <li>🕐 Open Daily: 12 PM – 11:30 PM</li>
+                    </ul>
+                </div>
+
+                <div class="footer-column footer-delivery">
+                    <h4>Order Online</h4>
+                    <div class="delivery-partners" style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                        <a href="https://www.zomato.com" target="_blank" class="delivery-btn" style="display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 8px; background: rgba(226, 55, 68, 0.2); border: 1px solid rgba(226, 55, 68, 0.4); font-weight: 500; font-family: 'Outfit', sans-serif;">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="#e23744">
+                                <path d="M12.924 1.1c-1.396 0-2.529.231-3.398.694-1.895.993-2.909 2.651-3.045 4.976-.1 1.701.597 3.39 1.947 4.708l-6.148 7.378c-.732.879.08 1.968 1.157 1.636l5.733-1.748-1.503 2.196c-.463.676.126 1.488.887 1.258l4.02-1.226-1.025 1.498c-.463.676.126 1.488.887 1.258l7.558-2.304c1.196-.364 1.716-1.884 1.022-2.898l-7.794-11.38c-1.564-2.28-1.282-4.143-.312-5.081.97-.938 2.639-1.238 4.779-.247l2.138 1.002.396-.867-2.128-.997c-.902-.423-1.996-.856-3.171-.856z"/>
+                            </svg>
+                            <span>Zomato</span>
+                        </a>
+                        <a href="https://www.swiggy.com" target="_blank" class="delivery-btn" style="display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; padding: 10px 15px; border-radius: 8px; background: rgba(252, 128, 25, 0.2); border: 1px solid rgba(252, 128, 25, 0.4); font-weight: 500; font-family: 'Outfit', sans-serif;">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="#fc8019">
+                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.176 16.914l-2.072 1.436c-.496.344-1.12.38-1.64.088-.86-.472-1.724-1.004-2.584-1.552-.896-.576-1.684-1.264-2.284-2.008-.6-.744-1.028-1.536-1.32-2.332-.292-.796-.452-1.616-.452-2.436 0-1.136.272-2.164.78-3.044.472-.816 1.136-1.464 1.936-1.92.8-.456 1.712-.68 2.7-.68 1.256 0 2.376.36 3.292 1.056.916.696 1.636 1.664 2.108 2.82.472 1.156.708 2.456.708 3.844 0 .964-.132 1.884-.384 2.732-.248.848-.624 1.628-1.104 2.316-.48.688-1.064 1.272-1.724 1.74zM16.516 11.232c-.08-.544-.268-1.028-.548-1.436-.28-.408-.636-.728-1.04-.952-.404-.224-.848-.336-1.312-.336-.88 0-1.596.348-2.112 1.02-.516.672-.78 1.544-.78 2.58 0 .864.192 1.636.568 2.296.376.66.92 1.176 1.604 1.52.484.248.96.444 1.412.58l.784-.536c-.372-.252-.716-.548-1.016-.88-.412-.464-.72-1.004-.908-1.596-.188-.592-.284-1.216-.284-1.856 0-.824.168-1.536.496-2.112.328-.576.78-1.008 1.328-1.28.264-.132.544-.22.824-.268l.984 1.256z"/>
+                            </svg>
+                            <span>Swiggy</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-middle">
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Get exclusive offers, event invites, and culinary stories delivered to your inbox.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email" required id="newsletterEmail">
+                    <button type="submit" id="newsletterSubmit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-left">
+                <p>&copy; 2024 – 2026 Hotel Happy Stay. All Rights Reserved.</p>
+            </div>
+            <div class="footer-bottom-center">
+                <a href="#privacy" class="footer-legal-link" id="privacyToggle">Privacy Policy</a>
+                <span class="footer-dot">•</span>
+                <a href="#terms" class="footer-legal-link" id="termsToggle">Terms & Conditions</a>
+                <span class="footer-dot">•</span>
+                <a href="#refund" class="footer-legal-link" id="refundToggle">Refund Policy</a>
+            </div>
+            <div class="footer-bottom-right">
+                <p>Crafted with ❤️ in Nashik</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- PRIVACY POLICY MODAL -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal-content">
+            <button class="modal-close" id="privacyModalClose" aria-label="Close">&times;</button>
+            <div class="modal-body">
+                <h2>Privacy Policy</h2>
+                <p class="modal-date">Last updated: August 2026</p>
+
+                <h3>1. Information We Collect</h3>
+                <p>When you make a reservation, contact us, or subscribe to our newsletter, we may collect the following personal information: your full name, phone number, email address, reservation date and preferences, and any special requests you provide. We also automatically collect certain technical data such as your IP address, browser type, and device information when you visit our website.</p>
+
+                <h3>2. How We Use Your Information</h3>
+                <p>We use the information we collect to: process and confirm your table reservations; respond to your inquiries and special requests; send you promotional offers, event invitations, and newsletters (only with your consent); improve our website, services, and overall dining experience; comply with legal and regulatory requirements.</p>
+
+                <h3>3. Data Protection</h3>
+                <p>We implement industry-standard security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. All data transmitted through our website is encrypted using SSL/TLS technology. We restrict access to your personal data to only those employees and service providers who need it to perform their duties.</p>
+
+                <h3>4. Sharing of Information</h3>
+                <p>We do not sell, trade, or rent your personal information to third parties. We may share your data with trusted service providers who assist us in operating our website, conducting our business, or serving you — provided those parties agree to keep this information confidential. We may also disclose your information when required by law or to protect our rights.</p>
+
+                <h3>5. Cookies</h3>
+                <p>Our website uses cookies to enhance your browsing experience, analyze site traffic, and personalize content. You can choose to disable cookies through your browser settings, though this may affect certain features of our website.</p>
+
+                <h3>6. Your Rights</h3>
+                <p>You have the right to: access, update, or delete your personal information; opt out of marketing communications at any time; request a copy of the data we hold about you. To exercise any of these rights, please contact us at <a href="mailto:info@hotelhappystay.com">info@hotelhappystay.com</a>.</p>
+
+                <h3>7. Changes to This Policy</h3>
+                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised "Last Updated" date. We encourage you to review this policy periodically.</p>
+
+                <h3>8. Contact Us</h3>
+                <p>If you have any questions or concerns about this Privacy Policy, please contact us at:<br>
+                <strong>Hotel Happy Stay</strong><br>
+                Plot No. 31, Near Kohinoor School, Opp. Meenatai Thakare Stadium,<br>
+                Swaminarayan Nagar, Nashik, Maharashtra 422003, India<br>
+                Email: <a href="mailto:info@hotelhappystay.com">info@hotelhappystay.com</a><br>
+                Phone: +91-9552347114, +91-8788345853</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-content">
+            <button class="modal-close" id="termsModalClose" aria-label="Close">&times;</button>
+            <div class="modal-body">
+                <h2>Terms & Conditions</h2>
+                <p class="modal-date">Last updated: August 2026</p>
+
+                <h3>1. Reservation Policy</h3>
+                <p>Reservations are subject to availability and are confirmed only upon receiving a confirmation call or message from our team. We request guests to arrive within 15 minutes of their reserved time. Tables not claimed within 30 minutes of the reservation time may be released to walk-in guests.</p>
+
+                <h3>2. Cancellation Policy</h3>
+                <p>Cancellations must be made at least 4 hours prior to the reservation time. For large group bookings (15+ guests) and private events, a minimum of 48 hours' notice is required. Failure to cancel or show up may result in a cancellation fee for future bookings.</p>
+
+                <h3>3. Guest Conduct</h3>
+                <p>We strive to provide a pleasant dining environment for all our guests. We reserve the right to refuse service to or ask any guest to leave the premises if their behavior is disruptive, dangerous, or violates our code of conduct. Smoking is permitted only in designated areas on the rooftop.</p>
+
+                <h3>4. Liability</h3>
+                <p>While we take every precaution to ensure guest safety, Hotel Happy Stay shall not be held liable for any loss, damage, or injury occurring on the premises unless caused by direct negligence on our part. Guests are advised to take care of their personal belongings.</p>
+
+                <h3>5. Intellectual Property</h3>
+                <p>All content on this website — including text, images, graphics, logos, and design elements — is the property of Hotel Happy Stay and is protected by intellectual property laws. Unauthorized use, reproduction, or distribution of any content is strictly prohibited.</p>
+
+                <h3>6. Modifications</h3>
+                <p>Hotel Happy Stay reserves the right to modify these terms and conditions at any time without prior notice. Continued use of our services constitutes acceptance of any updated terms.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Refund Modal -->
+    <div class="modal-overlay" id="refundModal">
+        <div class="modal-content">
+            <button class="modal-close" id="refundModalClose" aria-label="Close">&times;</button>
+            <div class="modal-body">
+                <h2>Refund Policy</h2>
+                <p class="modal-date">Last updated: August 2026</p>
+
+                <h3>1. Advance Payments</h3>
+                <p>For certain private events, large group bookings, or special packages, we may require an advance payment or deposit. This deposit serves as a confirmation of your booking.</p>
+
+                <h3>2. Refund Eligibility</h3>
+                <p>Full refunds are provided if the cancellation is made at least 72 hours before the scheduled event or booking. A 50% refund is provided for cancellations made between 24 and 72 hours before the scheduled event. No refund is available for cancellations made less than 24 hours before the event or for no-shows.</p>
+
+                <h3>3. Refund Process</h3>
+                <p>Approved refunds will be processed within 7-10 business days and credited back to the original payment method. For any refund-related queries, please contact us at <a href="mailto:info@hotelhappystay.com">info@hotelhappystay.com</a>.</p>
+
+                <h3>4. Non-Refundable Items</h3>
+                <p>Customized decorations, special arrangements, and perishable food items ordered in advance are non-refundable once the preparation has begun.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- BACK TO TOP -->
+    <!-- ═══════════════════════════════════════════ -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
